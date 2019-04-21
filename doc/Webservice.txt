@@ -1,0 +1,91 @@
+Rest Webservice
+===============
+Tutorial link: https://www.youtube.com/watch?v=Pjo14AiP1wo&list=PLVlQHNRLflP_qE5zYOhmwwSiPfH13f3Gx&index=2
+
+
+
+i. Swift programming language for IOS application
+
+Servlet need to learn
+
+
+JSON: java script object notation
+
+XML : extended markup language
+
+JSON; its leight weight process
+
+difference between Web application and webservice
+
+In case of webapplication, consumer must be a browser but in case of webservice consumer will be another application. as we know 
+
+webservice is a way to communicate bewteen the two application over the network.
+
+SOAP : Simple object access protocol
+REST : Representational State Transfer.
+
+Major differenc between the XML over JSON
+
+XMl is heaivy weight format and ocuppied more space. its also required high level bandwidth to work with this format
+thats why in mobile application used JSON format.
+
+JSON is light weight format and ocuppied less space.
+
+Need to download the jersy jar. to work for rest webservice. make google search "jersey rest api download"
+
+most popular toll to test test REST webservice is psotman
+
+
+
+Two implementation is used with the rest webservice one is jersey implementation developed by Sun and another one is by JBOSS implementation.
+
+
+In jersey implemnttaion to invoke the rest webservice belwo servlet container need to configured in DD (web.xml)
+
+Servlet Container: org.glassfish.jersey.servlet.ServletContainer
+
+url pattern : should be /rs/*, rs indicate this is related to webservice request, because some time one single application support web application and 
+ 
+web service both so just differenciate the url pattern
+
+configured init-param attribute in web.xml
+
+jersey packages config path: jersey.config.server.provider.packages
+value for the customer package is : path for the package which contain the services : "azt.ws" custom package.
+
+
+JAX - RS injection : means consumer will send some data to the provider and it will give responce back to client.
+
+so sending data to the provider is called injection.
+
+Different approches to send(inject) the data to the provider:
+
+-@PathParam :In this injection we pass the data as /firstinput/secondinput and so on means, after the proper url
+all inputs will be pass through the /(slash)
+-@QueryParam : in this each input paramter will pass with the param_nam=param_value & seprator used between the two inputs
+signature <url till webservice class>/<method_name>?<all inpputs which required for this method>
+
+-@MatrixParam : in this ;(semi colon used after each input ) insted & and also after method name also.
+
+-@FormParam : In this case we will create a html form and sumit the request to rs service
+-@HeaderParam
+-@BeanParam
+-@CookieParam
+
+in REST methods are called as resources and URL is called as URI
+
+REST webservice worked on top of the http protocol.
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+

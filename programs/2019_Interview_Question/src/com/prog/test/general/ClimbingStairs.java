@@ -8,16 +8,15 @@ public class ClimbingStairs {
 	}
 
 	static int fibonicci(int number) {
-
+		System.out.println("next number" +number);
 		if (number <= 1)
 			return number;
-		System.out.println("next number" +number);
 		return fibonicci(number - 1) + fibonicci(number - 2);
 
 	}
 
 	public static void main(String[] args) {
-		int stairs = 4;
+		int stairs = 1;
 		System.out.println("Number of ways to climbed :: " + findWays(stairs));
 
 	}

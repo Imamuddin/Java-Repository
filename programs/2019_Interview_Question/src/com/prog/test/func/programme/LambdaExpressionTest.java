@@ -13,18 +13,18 @@ public class LambdaExpressionTest {
 		r.run();
 	}
 
-	// implement runnable using lambda expression
+	/*// implement runnable using lambda expression
 	public static void show() {
 		Runnable r1 = () -> System.out.println("My Runnable");
 		r1.run();
-	}
+	}*/
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		print();
-		show();
+		//show();
 	}
 
 }

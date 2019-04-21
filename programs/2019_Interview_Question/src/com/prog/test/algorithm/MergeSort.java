@@ -4,84 +4,81 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-	static int[] sortIntArray(int mainArray[], int l,int right) {
-		
-		if (l<right) {
-		// divide the main array to get the mid point
-		int mid = (l+right) / 2;
-		
-		int leftArraySize = mid - l + 1; 
-        int rightArraySize = right - mid;
+	static int[] sortIntArray(int mainArray[], int l, int right) {
 
-		// initialize left and right array.
-		int leftArray[] = new int[leftArraySize];
-		int rightArray[] = new int[rightArraySize];
-
-		// fill left and right array
-		for (int i = 0; i < leftArray.length; i++) {
-			leftArray[i] = mainArray[i];
-		}
-
-		for (int j = 0; j < rightArray.length; j++) {
-			rightArray[j] = mainArray[mid +  j];
-		}
-
-		sortIntArray(leftArray,l,mid);
-		System.out.println("left array :: " + Arrays.toString(leftArray));
-		sortIntArray(rightArray,mid+1,right);
-		System.out.println("right array :: " + Arrays.toString(rightArray));
-		merge(leftArray,rightArray,mainArray);
-		System.out.println("after sorting array is ::" + Arrays.toString(mainArray));
+		if (l < right) {
+			// divide the main array to get the mid point
+			int mid = (l + right) / 2;
+			sortIntArray(mainArray, l, mid);
+			sortIntArray(mainArray, mid + 1, right);
+			merge(mainArray, l, mid, right);
 		}
 		return mainArray;
 	}
-	
-	static int [] merge(int leftArray[],int rightArray[],int mainArray[]) {
-		//define the initial indices for the left and right array
-		int i=0,j=0;
-		//define the initial indices for the main array
-		int k=1;
-		
-		//take the length of left and right array
-		int leftArraySize=leftArray.length;
-		int rightArraySize=rightArray.length;
-		
-		
-		
-		while(i<leftArraySize && j< rightArraySize) {
-			
-			if(leftArray[i]<=rightArray[j]) {
-				mainArray[k]=leftArray[i];
+
+	static int[] merge(int mainArray[], int l, int mid, int right) {
+
+		// find size of two sub array to be merge
+		int leftArr = mid - l + 1;
+		int rightArr = right - mid;
+
+		// create temporary array
+		int leftAry[] = new int[leftArr];
+		int rightAry[] = new int[rightArr];
+
+		// copy data to temporary array
+		for (int i = 0; i < leftArr; i++) {
+			leftAry[i] = mainArray[l + i];
+		}
+
+		for (int j = 0; j < rightArr; j++) {
+			rightAry[j] = mainArray[mid + 1 + j];
+		}
+
+		// initial indices of left and right sub array.
+
+		int i = 0, j = 0;
+
+		// initial indices of merged subarray
+
+		int k = 1;
+
+		while (i < leftArr && j < rightArr) {
+
+			if (leftAry[i] <= rightAry[j]) {
+				mainArray[k] = leftAry[i];
 				i++;
-				
-			}else {
-				mainArray[k]=rightArray[j];
+
+			} else {
+				mainArray[k] = rightAry[j];
 				j++;
-				
+
 			}
 			k++;
-			
+
 		}
-		
-		while(i<leftArraySize) {
-			mainArray[k]=leftArray[i];
+
+		while (i < leftArr) {
+			mainArray[k] = leftAry[i];
 			i++;
 			k++;
 		}
-		
-		while(j<rightArraySize) {
-			mainArray[k]=rightArray[j];
+		//this loop have problem need to check
+		while (j < rightArr) {
+			mainArray[k] = rightAry[j];
 			j++;
 			k++;
 		}
-		
+
 		return mainArray;
-		
+
 	}
 
 	public static void main(String[] args) {
 		int mainArray[] = { 6, 8, 7, 5, 4 };
-		mainArray = sortIntArray(mainArray,0,mainArray.length);
+		mainArray = sortIntArray(mainArray, 0, mainArray.length-1);
+		System.out.println("after sorting array is ::"
+				+ Arrays.toString(mainArray));
 
 	}
 

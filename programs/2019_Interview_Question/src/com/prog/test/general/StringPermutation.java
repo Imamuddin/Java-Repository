@@ -26,7 +26,7 @@ public class StringPermutation {
 	}
 
 	public static void main(String[] args) {
-		String str = "ABC";
+		String str = "ABCd";
 		permutateString(str,0,str.length()-1);
 
 	}

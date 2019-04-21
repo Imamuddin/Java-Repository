@@ -11,15 +11,18 @@ public class FaboniciiTest {
 	}
 
 	// using dynamic programming print the fabonicci series
-	static int[] fib(int num) {
-		int[] fibArray = new int[num + 2];
+	static int fib(int num) {
+		if(num==0) return 0;
+		else if (num==1) return 1;
+		
+		int[] fibArray = new int[num];
 		fibArray[0] = 0;
 		fibArray[1] = 1;
-		for (int i = 2; i <= num; i++) {
+		for (int i = 2; i < num; i++) {
 			fibArray[i] = fibArray[i - 1] + fibArray[i - 2];
 		}
 
-		return fibArray;
+		return fibArray[num-1] +fibArray[num-2];
 
 	}
 
@@ -27,7 +30,7 @@ public class FaboniciiTest {
 		int input = 5;
 		System.out.println("Print fabonicci of the number::" + fabonicciPrint(input));
 
-		System.out.println("Print fabonicci of the number by dynamic programming ::" + Arrays.toString(fib(input)));
+		System.out.println("Print fabonicci of the number by dynamic programming ::" + fib(input));
 
 	}
 

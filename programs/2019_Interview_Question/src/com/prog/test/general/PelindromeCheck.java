@@ -20,21 +20,21 @@ public class PelindromeCheck {
 	}
 
 	// reverse string using recursive approach
-	public static void reverseString(String str) {
+	public static String reverseString(String str) {
 		if ((str == null) || (str.length() <= 1)) {
 			System.out.println(str);
-			return;
+			return str;
 
 		}
 		System.out.print(str.charAt(str.length() - 1));
-		reverseString(str.substring(0, str.length() - 1));
+		return reverseString(str.substring(0, str.length() - 1));
 
 	}
 
 	public static void main(String[] args) {
-		checkPelindrome(121);
-		checkPelindrome(456);
-		reverseString("Test");
+		//checkPelindrome(121);
+		//checkPelindrome(456);
+		System.out.println(reverseString("Test"));
 
 	}
 

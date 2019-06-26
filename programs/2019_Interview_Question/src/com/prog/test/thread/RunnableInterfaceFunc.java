@@ -14,15 +14,15 @@ public class RunnableInterfaceFunc implements Runnable {
 
 	public static void main(String[] args) {
 		
-		  Thread t=new Thread(new RunnableInterfaceFunc()); t.start();
+		/* Thread t=new Thread(new RunnableInterfaceFunc()); t.start(); */
 		 
 		
-		/*
-		 * ExecutorService execService = Executors .newSingleThreadScheduledExecutor();
-		 * Future future = execService.submit(new RunnableInterfaceFunc());
-		 * execService.shutdown(); System.out.println("task completion result " +
-		 * future.isDone());
-		 */
+		
+		  ExecutorService execService = Executors .newSingleThreadScheduledExecutor();
+		  Future future = execService.submit(new RunnableInterfaceFunc());
+		  execService.shutdown(); System.out.println("task completion result " +
+		  future.isDone());
+		 
 		 
 
 	}

@@ -4,22 +4,22 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-	static int[] sortIntArray(int mainArray[], int l, int right) {
+	static int[] sortIntArray(int mainArray[], int left, int right) {
 
-		if (l < right) {
+		if (left < right) {
 			// divide the main array to get the mid point
-			int mid = (l + right) / 2;
-			sortIntArray(mainArray, l, mid);
+			int mid = (left + right) / 2;
+			sortIntArray(mainArray, left, mid);
 			sortIntArray(mainArray, mid + 1, right);
-			merge(mainArray, l, mid, right);
+			merge(mainArray, left, mid, right);
 		}
 		return mainArray;
 	}
 
-	static int[] merge(int mainArray[], int l, int mid, int right) {
+	static int[] merge(int mainArray[], int left, int mid, int right) {
 
 		// find size of two sub array to be merge
-		int leftArr = mid - l + 1;
+		int leftArr = mid - left + 1;
 		int rightArr = right - mid;
 
 		// create temporary array
@@ -27,46 +27,46 @@ public class MergeSort {
 		int rightAry[] = new int[rightArr];
 
 		// copy data to temporary array
-		for (int i = 0; i < leftArr; i++) {
-			leftAry[i] = mainArray[l + i];
+		for (int i = 0; i < leftArr; ++i) {
+			leftAry[i] = mainArray[left + i];
 		}
 
-		for (int j = 0; j < rightArr; j++) {
+		for (int j = 0; j < rightArr; ++j) {
 			rightAry[j] = mainArray[mid + 1 + j];
 		}
 
 		// initial indices of left and right sub array.
 
-		int i = 0, j = 0;
+		int leftIndices = 0, rightIndices = 0;
 
 		// initial indices of merged subarray
 
 		int k = 1;
 
-		while (i < leftArr && j < rightArr) {
+		while (leftIndices < leftArr && rightIndices < rightArr) {
 
-			if (leftAry[i] <= rightAry[j]) {
-				mainArray[k] = leftAry[i];
-				i++;
+			if (leftAry[leftIndices] <= rightAry[rightIndices]) {
+				mainArray[k] = leftAry[leftIndices];
+				leftIndices++;
 
 			} else {
-				mainArray[k] = rightAry[j];
-				j++;
+				mainArray[k] = rightAry[rightIndices];
+				rightIndices++;
 
 			}
 			k++;
 
 		}
 
-		while (i < leftArr) {
-			mainArray[k] = leftAry[i];
-			i++;
+		while (leftIndices < leftArr) {
+			mainArray[k] = leftAry[leftIndices];
+			leftIndices++;
 			k++;
 		}
 		//this loop have problem need to check
-		while (j < rightArr) {
-			mainArray[k] = rightAry[j];
-			j++;
+		while (rightIndices < rightArr) {
+			mainArray[k] = rightAry[rightIndices];
+			rightIndices++;
 			k++;
 		}
 

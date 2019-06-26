@@ -16,10 +16,8 @@ public class CallableInterfaceFunc implements Callable<String> {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		ExecutorService exectorService = Executors
-				.newSingleThreadScheduledExecutor();
-		Future<String> future = exectorService
-				.submit(new CallableInterfaceFunc());
+		ExecutorService exectorService = Executors.newSingleThreadScheduledExecutor();
+		Future<String> future = exectorService.submit(new CallableInterfaceFunc());
 		System.out.println("Callable result::" + future.get());
 		exectorService.shutdown();
 
